@@ -5,6 +5,10 @@ class MyhtmlHelper extends HtmlHelper {
 	
 	var $Number = null;
 	
+	function __construct() {
+	    parent::__construct();
+	}
+	
 	function avatar_for($user_id) {
 		return '';	
 	}
@@ -14,6 +18,8 @@ class MyhtmlHelper extends HtmlHelper {
 		// PTICA works not well with 1.2 validation
 		// PTICA div -> span 
 		//if ($error == $this->tagIsInvalid()) {
+		// very dull here:
+		// tagIsInvalid returns 1 or the message assigned during invalidate call
 		if ($error = $this->tagIsInvalid()) {
 			return sprintf('<span class="error-message">%s</span>', is_array($text) ? (empty($text[$error - 1]) ? 'Error in field' : $text[$error - 1]) : $text ? $text : $error);
 		} else {
