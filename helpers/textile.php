@@ -10,7 +10,7 @@
  * @license     http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
-App::import('Vendor', 'classTextile');
+App::import('Vendor', 'classTextile', array('file'=>'classTextile.php'));
 
 /**
  * Textile Helper class
@@ -38,6 +38,8 @@ class TextileHelper extends AppHelper {
      */
     function TextileThis($text, $lite='', $encode='', $noimage='', $strict='', $rel=''){
         $this->init();
+        // fo not force bq. to be used as a block (add a paragraph beggining before each bq.)
+    	$text = preg_replace('/\bbq. /', "\n\nbq. ", $text);
         return $this->textile->TextileThis($text, $lite='', $encode='', $noimage='', $strict='', $rel='');
     }
     
@@ -46,6 +48,8 @@ class TextileHelper extends AppHelper {
      */
     function TextileRestricted($text, $lite=1, $noimage=1, $rel='nofollow'){
         $this->init();
+        // fo not force bq. to be used as a block (add a paragraph beggining before each bq.)
+    	$text = preg_replace('/\bbq. /', "\n\nbq. ", $text);
         return $this->textile->TextileRestricted($text, $lite=1, $noimage=1, $rel='nofollow');
     }
 
