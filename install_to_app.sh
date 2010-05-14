@@ -33,10 +33,15 @@ while [ "$i" -lt "$count" ]; do
 	let i=i+1
 done
 
-#
-# symlink the fixups script and webroot/index.php file
-#
+ 
+# if there already is a symlink remove it
+if [ -h "$1/fixups" ]; then
+	rm "$1/fixups"
+fi
 
-ln -s "$script_dir/fixups" "$1/fixups"
-echo "fixups" >> "$1/.gitignore"
+# symlink the fixups script 
+if [ ! -e "$1/fixups" ]; then
+	ln -s "$script_dir/fixups" "$1/fixups"
+	echo "fixups" >> "$1/.gitignore"
+fi
 
