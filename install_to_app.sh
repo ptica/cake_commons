@@ -2,10 +2,14 @@
 
 if [ -z "$1" -o ! -e "$1" ]; then echo "usage: $0 <app_root_dir>"; exit; fi
 
+#
+# symlink dirs content where they belong in a cake app
+#
 src=( behaviors components  helpers layouts vendors views)
 dst=( models    controllers views   views   '.'      '.') 
 count=${#src[@]}
 i=0
+script_dir=$(./canon_path.sh .) 
 
 echo "# -- added by cake_common install script" >> "$1/.gitignore"
 
@@ -29,4 +33,16 @@ while [ "$i" -lt "$count" ]; do
 
 	let i=i+1
 done
+
+ 
+# if there already is a symlink remove it
+if [ -h "$1/fixups" ]; then
+	rm "$1/fixups"
+fi
+
+# symlink the fixups script 
+if [ ! -e "$1/fixups" ]; then
+	ln -s "$script_dir/fixups" "$1/fixups"
+	echo "fixups" >> "$1/.gitignore"
+fi
 
