@@ -1,0 +1,26 @@
+#!/bin/sh
+# I run this manually after checking out or updating subversion.
+# It fixes various things up that cannot be handled by revision control.
+
+set -e
+
+if [ ! -e tmp/cache/persistent ]; then
+	mkdir -p tmp/cache/persistent
+	mkdir -p tmp/cache/models
+	mkdir -p tmp/logs
+	mkdir -p tmp/session
+	mkdir -p tmp/tests
+fi
+chmod -R o+w tmp
+
+
+if [ ! -e .htaccess ]; then
+	cp .htaccess.template .htaccess
+fi
+if [ ! -e webroot/.htaccess ]; then
+	cp webroot/.htaccess.template webroot/.htaccess
+fi
+
+echo "You may need to enable mod_rewrite with 'sudo a2enmod rewrite'\n"
+echo "You may need to enable AllowOverride All in 'sudo vi /etc/apache2/sites-available/default'"
+echo "You may need to restart 'sudo /etc/init.d/apache2 restart'"
