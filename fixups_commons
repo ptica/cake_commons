@@ -1,0 +1,10 @@
+#!/bin/sh
+# I run this manually after checking out or updating subversion.
+# It fixes various things up that cannot be handled by revision control.
+
+set -e
+
+#
+if [ ! -e vendors/fb-php-sdk ]; then
+       git clone http://github.com/facebook/php-sdk.git fb-php-sdk
+fi       
