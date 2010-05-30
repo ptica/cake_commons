@@ -13,14 +13,6 @@ if [ ! -e tmp/cache/persistent ]; then
 fi
 chmod -R o+w tmp
 
-
-if [ ! -e .htaccess ]; then
-	cp .htaccess.template .htaccess
-fi
-if [ ! -e webroot/.htaccess ]; then
-	cp webroot/.htaccess.template webroot/.htaccess
-fi
-
 #
 if [ ! -e vendors/fb-php-sdk ]; then
        git clone http://github.com/facebook/php-sdk.git fb-php-sdk
