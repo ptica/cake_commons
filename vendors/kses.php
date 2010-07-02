@@ -29,6 +29,16 @@
 #
 # [kses strips evil scripts!]
 
+function kses_on_array(&$array, $allowed=array()) {
+	array_walk_recursive($array, 'kses_one_value', $allowed); 
+}
+
+function kses_one_value(&$val, $index=null, $allowed=array()) {
+	if (get_magic_quotes_gpc()) $val = stripslashes($val);
+	$val = kses($val, $allowed);
+	return $val;
+}
+
 
 function kses($string, $allowed_html, $allowed_protocols =
                array('http', 'https', 'ftp', 'news', 'nntp', 'telnet',
