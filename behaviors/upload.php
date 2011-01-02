@@ -49,7 +49,7 @@ class UploadBehavior extends ModelBehavior {
 			
 			// Check if directory exists and create it if required
 			if(!is_dir($options['dir'])) {
-				if($options['create_directory'] && !$this->Folder->mkdir($options['dir'])) {
+				if($options['create_directory'] && !$this->Folder->create($options['dir'])) {
 					unset($config[$field]);
 					unset($model->data[$model->name][$field]);
 				}
