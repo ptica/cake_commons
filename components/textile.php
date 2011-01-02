@@ -33,7 +33,7 @@ class TextileComponent extends Object {
      * Wrapper for TextileThis
      */
     function TextileThis($text, $lite='', $encode='', $noimage='', $strict='', $rel=''){
-    	// fo not force bq. to be used as a block (add a paragraph beggining before each bq.)
+    	// do not force bq. to be used as a block (add a paragraph beggining before each bq.)
     	$text = preg_replace('/\bbq. /', "\n\nbq. ", $text);
     }
     
@@ -41,7 +41,7 @@ class TextileComponent extends Object {
      * Wrapper for TextileRestricted
      */
     function TextileRestricted($text, $lite=1, $noimage=1, $rel='nofollow'){
-    	// fo not force bq. to be used as a block (add a paragraph beggining before each bq.)
+    	// do not force bq. to be used as a block (add a paragraph beggining before each bq.)
     	$text = preg_replace('/\bbq. /', "\n\nbq. ", $text);
         return $this->textile->TextileRestricted($text, $lite, $noimage, $rel);
     }

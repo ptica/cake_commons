@@ -5,8 +5,8 @@ if [ -z "$1" -o ! -e "$1" ]; then echo "usage: $0 <app_root_dir>"; exit; fi
 #
 # symlink dirs content where they belong in a cake app
 #
-src=( behaviors components  helpers layouts vendors views)
-dst=( models    controllers views   views   '.'      '.') 
+src=( behaviors components  helpers layouts vendors views js)
+dst=( models    controllers views   views   '.'      '.'  webroot) 
 count=${#src[@]}
 i=0
 script_dir=$(./canon_path.sh .) 

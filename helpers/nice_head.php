@@ -212,6 +212,10 @@ class NiceHeadHelper extends Helper {
 	 * Output the registered items
 	 *
 	 */
+	function _map_to_script($item) {
+    	return $this->Html->script($item);
+    }
+    
     function flush()
     {
     	foreach($this->priority as $type)
@@ -229,10 +233,12 @@ class NiceHeadHelper extends Helper {
 	    				}
 	    				break;
 	    			case 'js':
-	    				foreach($items as $item)
-	    				{
-	    					e($this->Html->script($item));
-	    				}
+	    				$items_html = array_map(array("NiceHeadHelper", "_map_to_script"), $items);
+	    				e(join("\n\t", $items_html));
+	    				#foreach($items as $item)
+	    				#{
+	    				#	e($this->Html->script($item));
+	    				#}
 	    				break;
 	    			case 'raw':
 	    				foreach($items as $item)

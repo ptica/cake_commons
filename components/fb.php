@@ -20,7 +20,6 @@ class FbComponent extends Object {
 	    ));
 	    
 	    $session = $app->getSession();
-	    if ($session) echo 'aaaa';
 		
 	    $this->app =& $app;
 	}
