@@ -5,13 +5,16 @@ if [ -z "$1" -o ! -e "$1" ]; then echo "usage: $0 <app_root_dir>"; exit; fi
 #
 # symlink dirs content where they belong in a cake app
 #
-src=( behaviors components  helpers layouts vendors views js)
-dst=( models    controllers views   views   '.'      '.'  webroot) 
+src=( behaviors components  helpers layouts vendors views js      shells)
+dst=( models    controllers views   views   '.'      '.'  webroot vendors) 
 count=${#src[@]}
 i=0
 script_dir=$(./canon_path.sh .) 
 
 echo "# -- added by cake_common install script" >> "$1/.gitignore"
+
+# create the shells dir
+mkdir -p "$1/shells"
 
 while [ "$i" -lt "$count" ]; do
 	s=${src[$i]}
