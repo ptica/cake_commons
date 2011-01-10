@@ -8,3 +8,10 @@ set -e
 if [ ! -e vendors/fb-php-sdk ]; then
        git clone http://github.com/facebook/php-sdk.git vendors/fb-php-sdk
 fi       
+
+if [ ! -e clone_area/ ]; then
+	mkdir clone_area
+	git clone https://github.com/felixge/debuggable-scraps.git clone_area/debuggable-scraps
+	ln -s ../clone_area/debuggable-scraps/cakephp/shells/fixtures/fixtures.php   shells/fixtures.php
+	ln -s ../clone_area/debuggable-scraps/cakephp/shells/fixturize/fixturize.php shells/fixturize.php
+fi       

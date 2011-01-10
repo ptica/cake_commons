@@ -1,0 +1,1 @@
+../clone_area/debuggable-scraps/cakephp/shells/fixturize/fixturize.php
