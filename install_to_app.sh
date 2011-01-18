@@ -14,7 +14,7 @@ script_dir=$(./canon_path.sh .)
 echo "# -- added by cake_common install script" >> "$1/.gitignore"
 
 # create the shells dir
-mkdir -p "$1/shells"
+mkdir -p "$1/vendors/shells"
 
 while [ "$i" -lt "$count" ]; do
 	s=${src[$i]}
@@ -27,6 +27,7 @@ while [ "$i" -lt "$count" ]; do
 		
 		if [ -e "$d_a/$f" ]; then `rm "$d_a/$f"`; fi
 		
+		#`rm $d_a/$f` # just in case there already is a symlink
 		`ln -s $s_a $d_a/$f`
 		echo "ln -s $s_a $d_a/$f"
 		dm="${dst[$i]}/$s/$f"
