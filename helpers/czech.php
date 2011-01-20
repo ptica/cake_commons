@@ -1,6 +1,6 @@
 <?php
 
-class CzechHelper extends Helper {
+class CzechHelper extends AppHelper {
 
 	var $nouns = array(
 		'příspěvek' => array('příspěvek', 'příspěvky', 'příspěvků'),
@@ -21,7 +21,10 @@ class CzechHelper extends Helper {
 	}
 	
 	function short_preps_nbsp($text) {
-		return preg_replace('/(\W[ksvzKSVZOoUuIiA]) (\w)/', '$1&nbsp;$2', $text);
+		return preg_replace('/(\W[ksvzKSVZOoUuIiAa]) (\w)/', '$1&nbsp;$2', $text);
+	}
+	function sp_to_nbsp($text) {
+		return preg_replace('/(\w) (\w)/', '$1&nbsp;$2', $text);
 	}
 }
 ?>
