@@ -27,7 +27,7 @@ while [ "$i" -lt "$count" ]; do
 		
 		if [ -e "$d_a/$f" ]; then `rm "$d_a/$f"`; fi
 		
-		#`rm $d_a/$f` # just in case there already is a symlink
+		`rm $d_a/$f` # just in case there already is a symlink
 		`ln -s $s_a $d_a/$f`
 		echo "ln -s $s_a $d_a/$f"
 		dm="${dst[$i]}/$s/$f"
