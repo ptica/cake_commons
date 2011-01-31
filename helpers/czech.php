@@ -21,7 +21,8 @@ class CzechHelper extends AppHelper {
 	}
 	
 	function short_preps_nbsp($text) {
-		return preg_replace('/(\W[ksvzKSVZOoUuIiAa]) (\w)/', '$1&nbsp;$2', $text);
+		// negative lookbehind to avoid matching in tags like <a href=
+		return preg_replace('/(?!<[^>]*)(\W[ksvzKSVZOoUuIiAa]) (\w)/', '$1&nbsp;$2', $text);
 	}
 	function sp_to_nbsp($text) {
 		return preg_replace('/(\w) (\w)/', '$1&nbsp;$2', $text);

@@ -41,7 +41,11 @@ class dAuthComponent extends Object
 								'login' => '/users/login',
 								'logout' => '/users/logout',
 								'register_success' => '/root/branches/',
-								'change_password_success' => '/root/branches/'
+								'change_password_success' => '/root/branches/',
+	
+								'login_success_a' => '/admin/branches/',
+								'register_success_a' => '/admin/branches/',
+								'change_password_success_a' => '/admin/branches/',
 							);
 
 	/* Here you can change the (error) messages that will be used */
@@ -196,7 +200,7 @@ class dAuthComponent extends Object
             	}
             	else
             	{
-            			$this->error = $this->messages['unknown_error'];
+            		$this->error = $this->messages['unknown_error'];
             	}
 			}
 		}
