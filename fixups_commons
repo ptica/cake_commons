@@ -12,6 +12,15 @@ fi
 if [ ! -e clone_area/ ]; then
 	mkdir clone_area
 	git clone https://github.com/felixge/debuggable-scraps.git clone_area/debuggable-scraps
-	ln -s ../clone_area/debuggable-scraps/cakephp/shells/fixtures/fixtures.php   shells/fixtures.php
-	ln -s ../clone_area/debuggable-scraps/cakephp/shells/fixturize/fixturize.php shells/fixturize.php
 fi       
+
+
+if [ ! -e shells/fixtures.php ]; then
+	rm -rf shells/fixtures.php
+	ln -s ../clone_area/debuggable-scraps/cakephp/shells/fixtures/fixtures.php   shells/fixtures.php
+fi
+
+if [ ! -e shells/fixturize.php ]; then
+	rm -rf shells/fixturize.php
+	ln -s ../clone_area/debuggable-scraps/cakephp/shells/fixturize/fixturize.php shells/fixturize.php
+fi
