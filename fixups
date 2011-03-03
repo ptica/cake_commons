@@ -12,6 +12,7 @@ if [ ! -e tmp/cache/persistent ]; then
 	mkdir -p tmp/tests
 fi
 chmod -R o+w tmp
+chmod -R o+w db
 
 
 if [ ! -e .htaccess ]; then
