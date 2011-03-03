@@ -1,0 +1,40 @@
+/* custom colors */.
+svoz-event, .fc-agenda .svoz-event .fc-event-time, * .svoz-event a {
+	background-color: #B5515D;
+	border-color: #B5515D;
+	color: white;
+}
+
+.plast-event, .fc-agenda .plast-event .fc-event-time, * .plast-event a {
+	background-color: #E0C240;
+	border-color: #E0C240;
+	color: white;
+}
+.sklo-event, .fc-agenda .sklo-event .fc-event-time, * .sklo-event a {
+	background-color: #3C995B;
+	border-color: #3C995B;
+	color: white;
+}
+.papir-event, .fc-agenda .papir-event .fc-event-time, * .papir-event a {
+	background-color: #668CD9;
+	border-color: #668CD9;
+	color: white;
+}
+.svoz-event, .plast-event, .papir-event, .sklo-event { height: 48px; }
+.svoz-event a, .plast-event a, .papir-event a, .sklo-event a { text-align: center }
+
+/* reseting cake styles */
+.fc td {
+	border-bottom-width: 0;
+}
+.fc table {
+	margin-bottom: 0;
+}
+
+.fc h2 {
+	color: black;
+	text-align: center;
+	font-weight: bold;
+	font-size: small;
+	margin-bottom:0.4em;
+}
