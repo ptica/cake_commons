@@ -4,6 +4,9 @@
 
 set -e
 
+if [ ! -e webroot/uploads ]; then
+	mkdir -p webroot/uploads
+fi
 if [ ! -e tmp/cache/persistent ]; then
 	mkdir -p tmp/cache/persistent
 	mkdir -p tmp/cache/models
@@ -13,6 +16,7 @@ if [ ! -e tmp/cache/persistent ]; then
 fi
 chmod -R o+w tmp
 chmod -R o+w db
+chmod -R o+w webroot/uploads
 
 
 if [ ! -e .htaccess ]; then
