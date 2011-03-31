@@ -1,6 +1,6 @@
 <?php
 
-App::import('Helper', 'time'); 
+App::import('Helper', 'Time'); 
 
 class CzechTimeHelper extends TimeHelper {
 
