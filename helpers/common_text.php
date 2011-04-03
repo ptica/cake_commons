@@ -79,6 +79,15 @@ class CommonTextHelper extends Helper
 		$url = trim($url, "-");
 		return $url;
 	}
+	
+	/* multibyte unicode ucfirst */
+	function mb_ucfirst($str){
+		# Split at all position not after the start: ^ 
+		# and not before the end: $ 
+		$str = preg_split('/(?<!^)(?!$)/u', $str, 2 ); 
+		$str[0] = mb_strtoupper($str[0]); 
+		return join($str); 
+	}
 }
 
 ?>
