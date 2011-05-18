@@ -27,5 +27,33 @@ class CzechHelper extends AppHelper {
 	function sp_to_nbsp($text) {
 		return preg_replace('/(\w) (\w)/', '$1&nbsp;$2', $text);
 	}
+	
+	function slashed_nice_numbers($text) {
+		$parts = explode('/', $text);
+		$res = array();
+		foreach ($parts as $part) $res[] = $this->nice_numbers($part);
+		return join(' / ', $res);
+	}
+	
+	function nice_numbers($num, $bold=false) {
+		if (1) $num = preg_replace('/\b(\d+)\b/', '<span class="anchor">\1</span>', $num);
+		if (preg_match('/\d000000\b/', $num)) {
+			$num = preg_replace('/000000\b/', '<span class="magnitude">milion</span>', $num);
+		}
+		if (preg_match('/\d\d00000\b/', $num)) {
+			$num = preg_replace('/(\d)00000\b/', '.\1<span class="magnitude">milion</span>', $num);
+		}
+		if (preg_match('/\d000\b/', $num)) {
+			$num = preg_replace('/000\b/', '<span class="magnitude">tisíc</span>', $num);
+		} else {
+			if (preg_match('/\d\d00\b/', $num)) {
+				$num = preg_replace('/(\d)00\b/', '.\1<span class="magnitude">tisíc</span>', $num);
+			}
+		}
+		
+		if ($bold) $num = preg_replace('/\b(\d+)\b/', '<b>\1</b>', $num);
+		
+		return $num;
+	}
 }
 ?>
