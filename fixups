@@ -29,3 +29,8 @@ fi
 echo "You may need to enable mod_rewrite with 'sudo a2enmod rewrite'\n"
 echo "You may need to enable AllowOverride All in 'sudo vi /etc/apache2/sites-available/default'"
 echo "You may need to restart 'sudo /etc/init.d/apache2 restart'"
+
+# run project specific fixups
+if [ -f fixups.project.specific ]; then
+	fixups.project.specific
+fi
