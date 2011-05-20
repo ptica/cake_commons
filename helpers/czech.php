@@ -29,14 +29,19 @@ class CzechHelper extends AppHelper {
 	}
 	
 	function slashed_nice_numbers($text) {
-		$parts = explode('/', $text);
+		//$parts = explode('/', $text);
+		$parts = preg_split('/\/(?!\w)/', $text); # prevent split before and tags
 		$res = array();
 		foreach ($parts as $part) $res[] = $this->nice_numbers($part);
 		return join(' / ', $res);
 	}
 	
 	function nice_numbers($num, $bold=false) {
-		if (1) $num = preg_replace('/\b(\d+)\b/', '<span class="anchor">\1</span>', $num);
+		if (!preg_match('/\d/', $num)) return '<span class="no-numbers">'.$num.'</span>';
+		
+		// just if something lower will match
+		if (preg_match('/\d\d00\b/', $num)) $num = preg_replace('/\b(\d+)\b/', '<span class="anchor">\1</span>', $num);
+		
 		if (preg_match('/\d000000\b/', $num)) {
 			$num = preg_replace('/000000\b/', '<span class="magnitude">milion</span>', $num);
 		}
