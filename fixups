@@ -31,6 +31,6 @@ echo "You may need to enable AllowOverride All in 'sudo vi /etc/apache2/sites-av
 echo "You may need to restart 'sudo /etc/init.d/apache2 restart'"
 
 # run project specific fixups
-if [ -f fixups.project.specific ]; then
-	fixups.project.specific
+if [ -f ./fixups.project.specific ]; then
+	./fixups.project.specific
 fi
