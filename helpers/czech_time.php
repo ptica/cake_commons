@@ -92,6 +92,23 @@ class CzechTimeHelper extends TimeHelper {
 		return $this->output($ret);
 	}
 	
+	function timeAgoInYesterdayAndDate($datetime_string, $format = 'j.n. Y', $backwards = false) {
+		list($date, $time) = explode(' ',$datetime_string);
+		$datetime = $this->fromString($date);
+		$in_seconds = $datetime;
+		
+		$today = date('Y-m-d');
+		$yesterday = date('Y-m-d', strtotime('-1 day'));
+		
+		if ($date == $today)     return $this->output('dnes');
+		if ($date == $yesterday) return $this->output('včera');
+		
+		$relative_date = date($format, $in_seconds);
+
+		$ret = $relative_date;
+		return $this->output($ret);
+	}
+	
 	function nice($date_string=null, $format1="j.n. Y", $format2=", H:i") {
 		if (preg_match('~^\d+\.\d+.\s*\d+~', $date_string)) $date_string = $this->_convertDate($date_string);
 	
