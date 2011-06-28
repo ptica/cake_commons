@@ -1,11 +1,13 @@
 <?php
 
-App::import('Helper', 'Html');
-
-class UserfilesHelper extends HtmlHelper {
+class UserfilesHelper extends AppHelper {
+	var $helpers = array('Html');
+	
+	/*  
+	 * return html code for uploaded userfiles images
+	 */
 	function image($item, $options = array()) {
 		$item = reset($item);
-		return parent::image('../'. $item['dir'].'/'.$item['filename'], $options);
+		return $this->Html->image('../'. $item['dir'].'/'.$item['filename'], $options);
 	}
 }
-?>
